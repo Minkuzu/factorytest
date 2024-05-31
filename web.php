@@ -1,5 +1,5 @@
 <?php
 $controllers = array(
-    'pages' => ['home', 'error']
+    '' => ['home', 'error']
   );
 ?>
