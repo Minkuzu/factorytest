@@ -1,24 +1,48 @@
 <?php
-namespace App;
-class Router {
-    protected $routes = [];
 
-    public function addRoute() { 
-        //$this->routes[$route] = ['controller' => $controller, 'action' => $action]; //-> this function is currently empty
-        //$this->routes['/'] = ['DantriParserController', 'home']
-        // echo "hello";
+namespace App;
+
+class Router
+{
+    protected $method;
+    protected $controller;
+
+    public function __construct(
+        $method, $controller
+    ){
+        $this->method=$method;
+        $this->controller = $controller;
     }
 
-    public function dispatch($uri) { //$uri = /factorytest/Application/
-        if (array_key_exists($uri, $this->routes)) { //$this->routes is currently null -> which means the addRoute() is not working
-            $controller = $this->routes[$uri]['controller']; //$this->routes[/factorytest/Application/DantriParserController]
-            $action = $this->routes[$uri]['action'];
+    // private function addRoute($route, $controller, $action, $method)
+    // {
 
-            $controller = new $controller();
-            $controller->$action();
-        } else {
-            throw new \Exception("No route found for URI: $uri");
-        }
+    //     $this->routes[$method][$route] = ['controller' => $controller, 'action' => $action];
+    // }
+
+    // public function get($route, $controller, $action)
+    // {
+    //     $this->addRoute($route, $controller, $action, "GET");
+    // }
+
+    // public function post($route, $controller, $action)
+    // {
+    //     $this->addRoute($route, $controller, $action, "POST");
+    // }
+    //add if statement to verify the URI is in the DantriController.php path -> if yes, create DantriController object -> call to home() action
+    public function dispatch()
+    {
+        $uri = strtok($_SERVER['REQUEST_URI'], '?');
+        $method =  $_SERVER['REQUEST_METHOD'];
+
+        // if (array_key_exists($uri, $this->routes[$method])) {
+            // $controller = $this->routes[$method][$uri]['controller'];
+            // $action = $this->routes[$method][$uri]['action'];
+
+            // $controller = new $controller();
+            // $controller->$action();
+        // } else {
+        //     throw new \Exception("No route found for URI: $uri");
+        // }
     }
 }
-    

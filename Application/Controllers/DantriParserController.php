@@ -2,7 +2,7 @@
 namespace App\Controllers;
 use App\BaseController;
 use App\Models\DantriParser;
-require_once '../../Views/DantriParser/home.php';
+require __DIR__ . "/../BaseController.php";
 class DantriParserController extends BaseController
 {
     public $dantriParser; 
@@ -14,13 +14,11 @@ class DantriParserController extends BaseController
     public function home()
     {
         // $url = $_POST['input'];
-        $data = [
-            // 'title' => $this->dantriParser->getTitle($url),
-            // 'content' => $this->dantriParser->getArticle($url)
-            'title' => 'Title test',
-            'content' => 'Content test'
-        ];
-        $this->render('home', $data);
+        // $data = [
+        //     'title' => $this->dantriParser->getTitle($url),
+        //     'content' => $this->dantriParser->getArticle($url)
+        // ];
+        $this->render('home');
         
     }
 }

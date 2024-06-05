@@ -11,7 +11,7 @@ class BaseController
             
         // } 
         extract($data);
-        include '../Application/Views/DantriParser/home.php';
+        include "Views/DantriParser/home.php";
     }
 }
 ?>
