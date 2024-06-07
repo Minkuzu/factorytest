@@ -5,9 +5,23 @@ use DOMDocument;
 use DOMXPath;
 class DantriParser extends Parser
 {
-    public function test()
+    public function crawlProcess($class)
     {
-        echo "Hello Dantri";
+        $url = "https://dantri.com.vn/the-thao/bao-philippines-binh-luan-khi-doi-nha-thua-dau-doi-tuyen-viet-nam-20240607003627722.htm";
+        $html = $this->GetUrl($url);
+
+        $dom = new DOMDocument();
+        @$dom->loadHTML($html);
+
+        $xpath = new DomXPath($dom);
+        $divs = $xpath->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $class ')]");
+
+        foreach($divs as $div) 
+        {
+            echo $div->nodeValue;
+            // If you want to include the html elements too:
+            // echo $dom->saveXML($div);   
+        }
     }
     public function getParser()
     {
@@ -16,45 +30,20 @@ class DantriParser extends Parser
     public function getTitle($url)
     {
         global $class;
-        $url = "https://dantri.com.vn/xa-hoi/quoc-hoi-hop-rieng-ve-cong-tac-nhan-su-20240605220331292.htm";
-        $html = $this->GetUrl($url);
-
-        $dom = new DOMDocument();
-        @$dom->loadHTML($html);
-
-        $xpath = new DomXPath($dom);
-        $class = 'title-page detail';
-        $divs = $xpath->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $class ')]");
-
-        foreach($divs as $div) 
-        {
-            echo $div->nodeValue;
-            // If you want to include the html elements too:
-            // echo $dom->saveXML($div);   
-        }
+        $class = 'title-page detail'; //refactor to get different class without declare in each functions
+        $this->crawlProcess($class);
     }
     public function getArticle($url)
     {
         global $class;
-        $html = $this->GetUrl($url);
-
-        $dom = new DOMDocument();
-        @$dom->loadHTML($html);
-
-        $xpath = new DomXPath($dom);
         $class = 'singular-content';
-        $divs = $xpath->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $class ')]");
-
-        foreach($divs as $div) 
-        {
-            echo $div->nodeValue;
-            // If you want to include the html elements too:
-            // echo $dom->saveXML($div);   
-        }
+        $this->crawlProcess($class);
     }
     public function getDate($url)
     {
-        echo $url;
+        global $class;
+        $class = 'author-time';
+        $this->crawlProcess($class);
     }
 }
 ?>
