@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php @$view ?>
-<form action="../../Views/DantriParser/home.php" method="post">
+<form action="/factorytest/public" method="post">
     <div>
         <label for="input">Input:</label>
         <input type="input" id="input" name="input"/>
