@@ -7,6 +7,6 @@
     <title>Demo PHP MVC</title>
   </head>
   <body>
-    <?= @$content ?>
+    <?= @$view ?>
   </body>
 </html>

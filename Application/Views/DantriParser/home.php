@@ -6,14 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-<?php @$view ?>
-<form action="/factorytest/public" method="post">
+
+<form action="../Application/Controllers/DantriParserController.php" method="post">
     <div>
         <label for="input">Input:</label>
         <input type="input" id="input" name="input"/>
     </div>
     <button type="submit">Get Data</button>
 </form>
+<?php echo $url = $_POST["input"]; 
+var_dump($title);?>
 <h2>Title:</h2>
 <title><?php $title ?></title>
 <h2>Content:</h2>

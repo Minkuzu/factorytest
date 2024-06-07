@@ -29,6 +29,7 @@ class DantriParser extends Parser
     }
     public function getTitle($url)
     {
+        
         global $class;
         $class = 'title-page detail'; //refactor to get different class without declare in each functions
         $this->crawlProcess($class);
