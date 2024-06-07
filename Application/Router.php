@@ -10,14 +10,11 @@ class Router
     {
 
         $this->routes[$method][$route] = ['controller' => $controller, 'action' => $action];
-        return $this->routes[$method][$route] = ['controller' => $controller, 'action' => $action];
-
     }
 
     public function get($route, $controller, $action)
     {
         $this->addRoute($route, $controller, $action, "GET");
-        return $this->addRoute($route, $controller, $action, "GET");
     }
 
     public function post($route, $controller, $action)
@@ -29,11 +26,6 @@ class Router
     {
         $uri = strtok($_SERVER['REQUEST_URI'], '?');
         $method =  $_SERVER['REQUEST_METHOD'];
-        echo "</br>";
-        var_dump($uri);
-        echo "</br>";
-        var_dump($this->routes[$method]);
-        echo "</br>";
         if (array_key_exists($uri, $this->routes[$method])) {
             $controller = $this->routes[$method][$uri]['controller'];
             $action = $this->routes[$method][$uri]['action'];
