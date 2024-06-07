@@ -13,7 +13,7 @@ class DantriParserController extends BaseController
     }
     public function home()
     {
-        $url = 'a';
+        $url = $_POST['input'];
         $data = [
              'title' => $this->dantriParser->getTitle($url),
              'date' => $this->dantriParser->getDate($url)
