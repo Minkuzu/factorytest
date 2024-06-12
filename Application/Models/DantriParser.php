@@ -18,11 +18,11 @@ class DantriParser extends Parser
 
         foreach($divs as $div) 
         {
-            $something = $div->nodeValue;
+            $data = $div->nodeValue;
             // If you want to include the html elements too:
             // echo $dom->saveXML($div);   
         }
-        return $something;
+        return $data;
     }
     public function getParser()
     {
