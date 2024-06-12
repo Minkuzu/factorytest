@@ -14,23 +14,13 @@ class DantriParserController extends BaseController
     }
     public function home()
     {
-        $url = $_POST['input'];
-        var_dump($url);
+        $url = "abc";
         $data = [
-             'title' => $this->dantriParser->getTitle($url),
-             'date' => $this->dantriParser->getDate($url)
-        ];
+            'title' => $this->dantriParser->getTitle($url),
+            'date' => $this->dantriParser->getDate($url)
+            ];
+
         $this->render('home', $data);
     }
-    // public function crawlData()
-    // {
-    //     $url = $_POST['input'];
-    //     var_dump($url);
-    //     $data = [
-    //          'title' => $this->dantriParser->getTitle($url),
-    //          'date' => $this->dantriParser->getDate($url)
-    //     ];
-    //     $this->render('crawl',$data);
-    // }
 }
 ?>

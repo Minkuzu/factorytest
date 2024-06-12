@@ -18,10 +18,11 @@ class DantriParser extends Parser
 
         foreach($divs as $div) 
         {
-            echo $div->nodeValue;
+            $something = $div->nodeValue;
             // If you want to include the html elements too:
             // echo $dom->saveXML($div);   
         }
+        return $something;
     }
     public function getParser()
     {
@@ -32,7 +33,7 @@ class DantriParser extends Parser
         
         global $class;
         $class = 'title-page detail'; //refactor to get different class without declare in each functions
-        $this->crawlProcess($class);
+        return $this->crawlProcess($class);
     }
     public function getArticle($url)
     {
@@ -44,7 +45,7 @@ class DantriParser extends Parser
     {
         global $class;
         $class = 'author-time';
-        $this->crawlProcess($class);
+        return $this->crawlProcess($class);
     }
 }
 ?>

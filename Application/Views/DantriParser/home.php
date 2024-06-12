@@ -1,3 +1,6 @@
+<?php 
+// require_once "../../BaseController.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,20 +9,24 @@
     <title>Document</title>
 </head>
 <body>
-
-<form action="../Application/Controllers/DantriParserController.php" method="post">
+<form action="" method="post">
     <div>
         <label for="input">Input:</label>
         <input type="input" id="input" name="input"/>
     </div>
     <button type="submit">Get Data</button>
 </form>
-<?php echo $url = $_POST["input"]; 
-var_dump($title);?>
+<?php 
+// echo $url = $_POST["input"]; 
+?>
 <h2>Title:</h2>
-<title><?php $title ?></title>
+<h3><?php 
+echo $title;
+?></h3>
 <h2>Content:</h2>
-<article><?php $content ?></article>
+<article><?php 
+echo $date;
+ ?></article>
 </body>
 </html>
 
