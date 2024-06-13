@@ -5,11 +5,11 @@ class BaseController
     public $folder;
     public function render($file, $data = [])
     {
-        $viewFile = "Views/" . $this->folder . "/" . $file . ".php"; //Views/whicheverControllerCalls/viewfile.php
+        $viewFile = "Views/" . $this->folder . "/" . $file . ".php"; //  Views/whicheverControllerCalls/viewfile.php
 
         extract($data);
         
-        include $viewFile;
+        require_once $viewFile;
     }
 }
 ?>
