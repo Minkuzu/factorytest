@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <a href="/factory">home page</a>
+        <a href="/factorytest">home page</a>
         <a href="?controller=VnexpressParser&action=home">Vnexpress</a>
     </header>
     <h1>This is Dantri</h1>

@@ -2,7 +2,7 @@
 
 use App\Controllers\DantriParserController;
 use App\Controllers\VnexpressParserController;
-  function call($controller, $action) {
+function call($controller, $action) {
     require_once "Application/Controllers/" . $controller . "Controller.php";
 
     switch($controller) { // using switch doesn't scale well
@@ -19,24 +19,26 @@ use App\Controllers\VnexpressParserController;
         $controller = new VnexpressParserController();
       break;
     }
-
     $controller->$action();
-  }
-  // we're adding an entry for the new controller and its actions
-  $controllers = array( 'Pages' => ['home', 'error'],
-                        'DantriParser' => ['home'],
-                        'VnexpressParser' => ['home']);
+}
 
-  if (array_key_exists($controller, $controllers)) {
+
+// we're adding an entry for the new controller and its actions
+$controllers = array(   'Pages' => ['home', 'error'],
+                        'DantriParser' => ['home'],
+                        'VnexpressParser' => ['home']
+                    );
+if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-      call($controller, $action);
-      echo "Call to function successfully";
+        call($controller, $action);
+        echo "Call to function successfully";
+        echo $_POST['input'];
     } else {
-      call('pages', 'error');
-      echo "something wrong";
+        call('pages', 'error');
+        echo "something wrong";
     }
-  } else {
+} else {
     call('pages', 'error');
     echo "something wrong";
-  }
+}
 ?>
