@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <p>This is the layout</p>
     <?php require_once "route.php"; ?>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php 
-// require_once "../../BaseController.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,19 +8,24 @@
     <title>Document</title>
 </head>
 <body>
-<?php 
-// echo $url = $_POST["input"]; 
-?>
-<h2>Title:</h2>
-<h3>
-<?php 
+    <header>
+        <a href="/factory">home page</a>
+        <a href="?controller=VnexpressParser&action=home">Vnexpress</a>
+    </header>
+    <h1>This is Dantri</h1>
+<h2>Title: <?php 
     echo $title;
-?>
+?></h2>
+<h3>
 </h3>
+<h2>Date: </h2>
+<p><?php 
+echo $date;
+?></p>
 <h2>Content:</h2>
 <article>
-<?php 
-    echo $date;
+<?php
+echo $article;
 ?>
  </article>
 </body>
