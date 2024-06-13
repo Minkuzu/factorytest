@@ -19,7 +19,6 @@ class DantriParserController extends BaseController
             'title' => $this->dantriParser->getTitle($url),
             'date' => $this->dantriParser->getDate($url)
             ];
-
         $this->render('home', $data);
     }
 }

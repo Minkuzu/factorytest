@@ -13,13 +13,17 @@
 // echo $url = $_POST["input"]; 
 ?>
 <h2>Title:</h2>
-<h3><?php 
-echo $title;
-?></h3>
+<h3>
+<?php 
+    echo $title;
+?>
+</h3>
 <h2>Content:</h2>
-<article><?php 
-echo $date;
- ?></article>
+<article>
+<?php 
+    echo $date;
+?>
+ </article>
 </body>
 </html>
 
