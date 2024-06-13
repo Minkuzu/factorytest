@@ -10,7 +10,6 @@ class BaseController
         extract($data);
         
         include $viewFile;
-        
     }
 }
 ?>
