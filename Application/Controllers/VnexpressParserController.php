@@ -9,7 +9,7 @@ class VnexpressParserController extends BaseController
     public $vnexpressParser; 
     public function __construct()
     {
-        $this->folder = 'DantriParser';
+        $this->folder = 'VnexpressParser'; // Folder of Views
         $this->vnexpressParser = new VnexpressParser();
     }
     public function home()
