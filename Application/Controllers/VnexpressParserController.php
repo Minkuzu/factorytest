@@ -1,8 +1,7 @@
 <?php
 namespace App\Controllers;
-use App\BaseController;
+use App\BaseController; // composer doesn't work
 use App\Models\VnexpressParser;
-require __DIR__ . "/../Views/DantriParser/home.php";
 require __DIR__ . "/../BaseController.php";
 class VnexpressParserController extends BaseController
 {
@@ -14,7 +13,7 @@ class VnexpressParserController extends BaseController
     }
     public function home()
     {
-        $url = "abc";
+        $url = "https://vnexpress.net/fed-tiep-tuc-giu-nguyen-lai-suat-4757645.html";
         $data = [
             'title' => $this->vnexpressParser->getTitle($url),
             'date' => $this->vnexpressParser->getDate($url)
