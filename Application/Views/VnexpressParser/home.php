@@ -1,3 +1,5 @@
+<?php 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +8,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Title:</h2>
-    <title></title>
-    <h3>Date:</h3>
-    <h4></h4>
-    <h2>Content:</h2>
-    <article></article>
+<header>
+        <a href="/factory">home page</a>
+        <a href="?controller=DantriParser&action=home">Dantri</a>
+    </header>
+    <h1>This is Vnexpress</h1>
+<h2>Title: <?php 
+    echo $title;
+?></h2>
+<h2>Date: </h2><p><?php 
+    echo $date;
+?></p>
+<article>
+ </article>
 </body>
 </html>
