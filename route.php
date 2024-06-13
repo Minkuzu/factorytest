@@ -30,7 +30,7 @@ use App\Controllers\VnexpressParserController;
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
       call($controller, $action);
-      echo "something right";
+      echo "Call to function successfully";
     } else {
       call('pages', 'error');
       echo "something wrong";
