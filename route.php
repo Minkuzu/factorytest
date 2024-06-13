@@ -20,7 +20,7 @@ use App\Controllers\VnexpressParserController;
       break;
     }
 
-    $controller->{ $action }();
+    $controller->$action();
   }
   // we're adding an entry for the new controller and its actions
   $controllers = array( 'Pages' => ['home', 'error'],
