@@ -7,9 +7,9 @@ class BaseController
     {
         $viewFile = "Views/" . $this->folder . "/" . $file . ".php"; //  Views/whicheverControllerCalls/viewfile.php
 
-        extract($data);
+        extract($data);  
         
-        require_once $viewFile;
+        include $viewFile;
     }
 }
 ?>
