@@ -22,7 +22,9 @@ class VnexpressParser extends Parser
     }
     public function getArticle($url)
     {
-
+        global $class;
+        $class = 'fck_detail';
+        return $this->crawlProcess($url, $class);
     }
 }
 ?>

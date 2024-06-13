@@ -19,7 +19,11 @@
 <h2>Date: </h2><p><?php 
     echo $date;
 ?></p>
+<h2>Content:</h2>
 <article>
+    <?php
+    echo $article;
+    ?>
  </article>
 </body>
 </html>

@@ -16,7 +16,8 @@ class VnexpressParserController extends BaseController
         $url = "https://vnexpress.net/fed-tiep-tuc-giu-nguyen-lai-suat-4757645.html";
         $data = [
             'title' => $this->vnexpressParser->getTitle($url),
-            'date' => $this->vnexpressParser->getDate($url)
+            'date' => $this->vnexpressParser->getDate($url),
+            'article' => $this->vnexpressParser->getArticle($url)
             ];
 
         $this->render('home', $data);
