@@ -6,7 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="?controller=DantriParser&action=home">DantriParser</a>
+    <a href="?controller=DantriParser&action=home">Dantri</a>
+    <a href="?controller=VnexpressParser&action=home">Vnexpress</a>
+
 <form action="" method="post">
     <div>
         <label for="input">Input:</label>
