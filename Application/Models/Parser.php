@@ -3,9 +3,8 @@ namespace App\Models;
 use DOMDocument;
 use DOMXPath;
 abstract class Parser{
-    public function crawlProcess($class)
+    public function crawlProcess($url, $class)
     {
-        $url = "https://dantri.com.vn/the-thao/bao-philippines-binh-luan-khi-doi-nha-thua-dau-doi-tuyen-viet-nam-20240607003627722.htm";
         $html = $this->GetUrl($url);
 
         $dom = new DOMDocument();
@@ -30,10 +29,10 @@ abstract class Parser{
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
-        $data = curl_exec($ch);
+        $urlData = curl_exec($ch);
 
         curl_close($ch);
-        return $data;
+        return $urlData;
     }
     public abstract function getParser();
     public abstract function getTitle($url);
