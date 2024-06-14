@@ -13,7 +13,7 @@ class DantriParserController extends BaseController
     }
     public function home()
     {
-        $url = "https://dantri.com.vn/the-thao/bao-philippines-binh-luan-khi-doi-nha-thua-dau-doi-tuyen-viet-nam-20240607003627722.htm";
+        $url = $_POST['input'];
         $data = [
             'title' => $this->dantriParser->getTitle($url),
             'date' => $this->dantriParser->getDate($url),

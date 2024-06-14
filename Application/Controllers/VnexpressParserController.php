@@ -13,13 +13,12 @@ class VnexpressParserController extends BaseController
     }
     public function home()
     {
-        $url = "https://vnexpress.net/fed-tiep-tuc-giu-nguyen-lai-suat-4757645.html";
+        $url = $_POST['input'];
         $data = [
             'title' => $this->vnexpressParser->getTitle($url),
             'date' => $this->vnexpressParser->getDate($url),
             'article' => $this->vnexpressParser->getArticle($url)
             ];
-
         $this->render('home', $data);
     }
 }
