@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +17,5 @@
     </div>
     <button type="submit">Get Data</button>
 </form>  
-<?php 
-echo getcwd()
-?>
 </body>
 </html>
