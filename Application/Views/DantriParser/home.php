@@ -13,21 +13,10 @@
         <a href="?controller=VnexpressParser&action=home">Vnexpress</a>
     </header>
     <h1>This is Dantri</h1>
-<h2>Title: <?php 
-    echo $title;
-?></h2>
-<h3>
-</h3>
-<h2>Date: </h2>
-<p><?php 
-echo $date;
-?></p>
+<h2>Title: <?php echo $title; ?></h2>
 <h2>Content:</h2>
-<article>
-<?php
-echo $article;
-?>
- </article>
+<article><?php echo $article; ?></article>
+<h2>Date: </h2><?php echo $date; ?>
 </body>
 </html>
 
