@@ -8,7 +8,7 @@ class DantriParserController extends BaseController
     public $dantriParser; 
     public function __construct()
     {
-        $this->folder = 'DantriParser';
+        $this->folder = 'DantriParser'; // Folder of Views
         $this->dantriParser = new DantriParser();
     }
     public function home()
