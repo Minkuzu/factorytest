@@ -24,9 +24,16 @@ class DantriParserController extends BaseController
             'article' => $article
             ];
         require __DIR__ . "/../../connection.php";
-        $sql = "INSERT INTO DanTri (danTriUrl, title, content, date_created)
-        VALUES ('$url', '$title', '$article', '$date')";
-        if ($conn->query($sql) === TRUE) {
+        $sql = "SELECT * FROM DanTri WHERE danTriUrl LIKE '$url'";
+        if(isset($sql)) {
+            $sql .= "INSERT INTO DanTri (danTriUrl, title, content, date_created)
+            VALUES ('$url', '$title', '$article', '$date')";
+        } else {
+            echo "$sql is not null";
+        }
+        // $sql .= "INSERT INTO DanTri (danTriUrl, title, content, date_created)
+        // VALUES ('$url', '$title', '$article', '$date')";
+        if ($conn->multi_query($sql) === TRUE) {
           echo "Data successfully inserted into table";
         } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
