@@ -12,7 +12,7 @@
         <a href="/factorytest">home page</a>
         <a href="?controller=VnexpressParser&action=home">Vnexpress</a>
     </header>
-    <h1>This is Dantri</h1>
+    <h1>You are crawling data from Dantri news</h1>
 <h2>Title: <?php echo $title; ?></h2>
 <h2>Content:</h2>
 <article><?php echo $article; ?></article>
