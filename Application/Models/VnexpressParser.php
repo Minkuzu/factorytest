@@ -4,10 +4,6 @@ use App\Models\Parser;
 require_once __DIR__ . "/Parser.php";
 class VnexpressParser extends Parser
 {
-    public function getParser()
-    {
-
-    }
     public function getTitle($url)
     {
         global $class;
