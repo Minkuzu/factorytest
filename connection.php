@@ -17,5 +17,4 @@ if ($conn->connect_error) {
 // }
 
 //  Query for database
-
 ?>

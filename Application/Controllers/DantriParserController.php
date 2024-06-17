@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use App\BaseController; // composer doesn't work
 use App\Models\DantriParser;
+
 require __DIR__ . "/../BaseController.php";
 
 class DantriParserController extends BaseController
@@ -24,19 +25,23 @@ class DantriParserController extends BaseController
             'article' => $article
             ];
         require __DIR__ . "/../../connection.php";
-        $sql = "SELECT * FROM DanTri WHERE danTriUrl LIKE '$url'";
-        if(isset($sql)) {
-            $sql .= "INSERT INTO DanTri (danTriUrl, title, content, date_created)
+        $sql = "SELECT danTriUrl FROM DanTri WHERE danTriUrl LIKE '$url'";
+        //Get results from query
+        $result = mysqli_query($conn, $sql);
+        //Check if there are any record match with the url
+        if(mysqli_num_rows($result) == 0)
+        {
+            $sql2 = "INSERT INTO DanTri (danTriUrl, title, content, date_created)
             VALUES ('$url', '$title', '$article', '$date')";
-        } else {
-            echo "$sql is not null";
-        }
-        // $sql .= "INSERT INTO DanTri (danTriUrl, title, content, date_created)
-        // VALUES ('$url', '$title', '$article', '$date')";
-        if ($conn->multi_query($sql) === TRUE) {
-          echo "Data successfully inserted into table";
-        } else {
-          echo "Error: " . $sql . "<br>" . $conn->error;
+            if ($conn->query($sql2) === TRUE) {
+                echo "Data successfully inserted into table!";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        //If yes, no insert
+        } elseif (mysqli_num_rows($result) == 1)
+        {
+            echo "This url is already in database!";
         }
         $this->render('home', $data);
     }
