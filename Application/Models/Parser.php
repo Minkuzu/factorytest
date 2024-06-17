@@ -34,7 +34,6 @@ abstract class Parser{
         curl_close($ch);
         return $urlData;
     }
-    public abstract function getParser();
     public abstract function getTitle($url);
     public abstract function getArticle($url);
     public abstract function getDate($url);
