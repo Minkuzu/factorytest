@@ -4,7 +4,7 @@ use App\Models\Parser; // composer suddenlly stopped working after add Vnexpress
 require_once __DIR__ ."/Parser.php";
 class DantriParser extends Parser
 {
-    public function getParser()
+    public function getClass()
     {
         echo "getParser";
     }
