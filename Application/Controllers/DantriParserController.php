@@ -24,7 +24,7 @@ class DantriParserController extends BaseController
             'title' => $title,
             'date' => $date,
             'article' => $article
-            ];
+            ];              
         require __DIR__ . "/../../connection.php";
         $sql = "SELECT danTriUrl FROM DanTri WHERE danTriUrl LIKE '$url'";
         //  Get results from query
