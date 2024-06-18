@@ -5,6 +5,7 @@ use DOMXPath;
 abstract class Parser{
     public function crawlProcess($url, $class)
     {
+        
         $html = $this->GetUrl($url);
 
         $dom = new DOMDocument();
@@ -13,6 +14,11 @@ abstract class Parser{
         $xpath = new DomXPath($dom);
         $divs = $xpath->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $class ')]");
 
+        return $divs;
+    }
+    public function returnData($url, $class)
+    {
+        $divs = $this->crawlProcess($url,$class);
         foreach($divs as $div) 
         {
             $data = $div->nodeValue;
@@ -20,7 +26,8 @@ abstract class Parser{
             // echo $dom->saveXML($div);   
         }
         return $data;
-    }
+    }   
+
     public function getUrl($url)
     {
         $ch = curl_init();
