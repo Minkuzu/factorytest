@@ -52,17 +52,4 @@ if(isset($url)){
     echo "something wrong";
 }
 }
-// if (array_key_exists($controller, $controllers)) {
-//     if (in_array($action, $controllers[$controller])) {
-//         call($controller, $action);
-//         distinguish($url);
-//         echo "Call to function successfully";
-//     } else {
-//         call('pages', 'error');
-//         echo "something wrong";
-//     }
-// } else {
-//     call('pages', 'error');
-//     echo "something wrong";
-// }
 ?>

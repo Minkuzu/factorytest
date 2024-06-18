@@ -26,9 +26,9 @@ class VnexpressParserController extends BaseController
             ];
         require __DIR__ . "/../../connection.php";
         $sql = "SELECT vnExpressUrl FROM VnExpress WHERE vnExpressUrl LIKE '$url'";
-        //Get results from query
+        //  Get results from query
         $result = mysqli_query($conn, $sql);
-        //Check if there are any record match with the url
+        //  Check if there are any record match with the url
         if(mysqli_num_rows($result) == 0)
         {
             $sql2 = "INSERT INTO VnExpress (vnExpressUrl, title, content, date_created)
@@ -38,7 +38,7 @@ class VnexpressParserController extends BaseController
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
-        //If yes, no insert
+        //  If yes, don't insert
         } elseif (mysqli_num_rows($result) == 1)
         {
             echo "This url is already in database!";

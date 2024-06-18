@@ -7,7 +7,7 @@ class VnexpressParser extends Parser
     public function getTitle($url)
     {
         global $class;
-        $class = 'title-detail'; //refactor to get different class without declare in each functions
+        $class = 'title-detail';
         return $this->crawlProcess($url, $class);
     }
     public function getDate($url)
