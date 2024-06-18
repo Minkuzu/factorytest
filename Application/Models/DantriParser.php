@@ -2,29 +2,39 @@
 namespace App\Models;
 use App\Models\Parser; // composer suddenlly stopped working after add VnexpressParser
 require_once __DIR__ ."/Parser.php";
+
 class DantriParser extends Parser
 {
-    public function getClass()
+    private $titleClass;
+    private $articleClass;
+    public function getClass($url)
     {
-        echo "getParser";
+        global $titleClass;
+        global $articleClass;
+        $class = "emagazine";
+        if($this->crawlProcess($url, $class)->length == 0)
+        {
+            $titleClass = 'title-page detail';
+            $articleClass = 'singular-content';
+        }else{
+            $titleClass = 'e-magazine__title';
+            $articleClass = 'e-magazine__body';
+        }
     }
     public function getTitle($url)
     {
-        global $class;
-        $class = 'title-page detail'; //refactor to get different class without declare in each functions
-        return $this->crawlProcess($url, $class);
+        global $titleClass;
+        return $this->returnData($url, $titleClass);
     }
     public function getArticle($url)
     {
-        global $class;
-        $class = 'singular-content';
-        return $this->crawlProcess($url, $class);
+        global $articleClass;
+        return $this->returnData($url, $articleClass);
     }
     public function getDate($url)
     {
-        global $class;
-        $class = 'author-time';
-        return $this->crawlProcess($url, $class);
+        $dateClass = 'author-time';
+        return $this->returnData($url, $dateClass);
     }
 }
 ?>
