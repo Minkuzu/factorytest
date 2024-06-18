@@ -5,8 +5,6 @@ require_once __DIR__ ."/Parser.php";
 
 class DantriParser extends Parser
 {
-    private $titleClass;
-    private $articleClass;
     public function getClass($url)
     {
         global $titleClass;
