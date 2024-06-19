@@ -7,7 +7,7 @@ require __DIR__ . "/../BaseController.php";
 
 class VnexpressParserController extends BaseController
 {
-    public $vnexpressParser; 
+    private $vnexpressParser; 
     public function __construct()
     {
         $this->folder = 'VnexpressParser'; // Folder of Views
