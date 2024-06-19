@@ -2,7 +2,7 @@
 namespace App;
 class BaseController
 {
-    public $folder;
+    protected $folder;
     
     public function render($file, $data = [])
     {
