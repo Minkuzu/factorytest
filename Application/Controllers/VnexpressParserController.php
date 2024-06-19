@@ -13,26 +13,36 @@ class VnexpressParserController extends BaseController
         $this->folder = 'VnexpressParser'; // Folder of Views
         $this->vnexpressParser = new VnexpressParser();
     }
-    public function home()
+    public function getVariables()
     {
         $url = $_POST['input'];
         $title = $this->vnexpressParser->getTitle($url);
         $date = $this->vnexpressParser->getDate($url);
         $article = $this->vnexpressParser->getArticle($url);
+        return array($url, $title, $article, $date);
+    }
+    public function home()
+    {
+        $elements = $this->getVariables();
         $data = [
-            'title' => $title,
-            'date' => $date,
-            'article' => $article
+            'title' => $elements[1],
+            'article' => $elements[2],
+            'date' => $elements[3]
             ];
+        $this->saveToDB($elements);
+        $this->render('home', $data);
+    }
+    public function saveToDB($elements)
+    {
         require __DIR__ . "/../../connection.php";
-        $sql = "SELECT vnExpressUrl FROM VnExpress WHERE vnExpressUrl LIKE '$url'";
+        $sql = "SELECT vnExpressUrl FROM VnExpress WHERE vnExpressUrl LIKE '$elements[0]'";
         //  Get results from query
         $result = mysqli_query($conn, $sql);
         //  Check if there are any record match with the url
         if(mysqli_num_rows($result) == 0)
         {
             $sql2 = "INSERT INTO VnExpress (vnExpressUrl, title, content, date_created)
-            VALUES ('$url', '$title', '$article', '$date')";
+            VALUES ('$elements[0]', '$elements[1]', '$elements[2]', '$elements[3]')";
             if ($conn->query($sql2) === TRUE) {
                 echo "Data successfully inserted into table!";
             } else {
@@ -43,7 +53,6 @@ class VnexpressParserController extends BaseController
         {
             echo "This url is already in database!";
         }
-        $this->render('home', $data);
     }
 }
 ?>
