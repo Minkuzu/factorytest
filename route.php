@@ -23,14 +23,16 @@ function call($controller, $action) {
 }
 
 $url = $_POST['input'];
-var_dump(empty($url));
+$path = explode("https://dantri.com.vn", $url);
+var_dump($path);
 // we're adding an entry for the new controller and its actions
 $controllers = array(   'Pages' => ['home', 'error'],
                         'DantriParser' => ['home'],
                         'VnexpressParser' => ['home']
                     );
 if(empty($url) == false)  {
-  if(str_contains($url, "dantri.com.vn")) {
+  require_once "path.php";
+  if(str_contains($url, "dantri.com.vn") && array_search($path[1], $categories) == false) { // false means newspaper
     $controller = 'DantriParser';
     $action = 'home';
     call($controller, $action);
