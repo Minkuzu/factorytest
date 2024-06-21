@@ -24,7 +24,6 @@ function call($controller, $action) {
 
 $url = $_POST['input'];
 $path = explode("https://dantri.com.vn", $url);
-var_dump($path);
 // we're adding an entry for the new controller and its actions
 $controllers = array(   'Pages' => ['home', 'error'],
                         'DantriParser' => ['home'],
