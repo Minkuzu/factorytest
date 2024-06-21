@@ -12,7 +12,7 @@ $ch = curl_init();
         curl_close($ch);
 
 $dom = new DOMDocument();
-@$dom->loadHTML($html);
+@$dom->loadHTML($html); // ^: Duplicated from Controller
 $categories = array();
 $anchorTag = $dom->getElementsByTagName("a");
 foreach($anchorTag as $anchorTags)
