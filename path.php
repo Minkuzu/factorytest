@@ -12,10 +12,9 @@ $ch = curl_init();
         curl_close($ch);
 
 $dom = new DOMDocument();
-@$dom->loadHTML($html); // ^: Duplicated from Controller
+@$dom->loadHTML($html); // ^: Duplicated from Model
 $categories = array();
-$anchorTag = $dom->getElementsByTagName("a");
-foreach($anchorTag as $anchorTags)
+foreach($dom->getElementsByTagName("a") as $anchorTags)
 {
     $categories[] = $anchorTags->getAttribute('href');
 }
