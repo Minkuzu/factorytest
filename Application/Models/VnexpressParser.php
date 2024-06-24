@@ -8,19 +8,19 @@ class VnexpressParser extends Parser
     {
         global $class;
         $class = 'title-detail';
-        return $this->crawlProcess($url, $class);
+        return $this->returnData($url, $class);
     }
     public function getDate($url)
     {
         global $class;
         $class = 'date'; 
-        return $this->crawlProcess($url, $class);
+        return $this->returnData($url, $class);
     }
     public function getArticle($url)
     {
         global $class;
         $class = 'fck_detail';
-        return $this->crawlProcess($url, $class);
+        return $this->returnData($url, $class);
     }
 }
 ?>
