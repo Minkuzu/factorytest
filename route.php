@@ -23,7 +23,7 @@ function call($controller, $action) {
 }
 
 $url = $_POST['input'];
-$path = explode("https://dantri.com.vn", $url);
+$path = parse_url($url, PHP_URL_PATH);
 // we're adding an entry for the new controller and its actions
 $controllers = array(   'Pages' => ['home', 'error'],
                         'DantriParser' => ['home'],
@@ -31,16 +31,17 @@ $controllers = array(   'Pages' => ['home', 'error'],
                     );
 if(empty($url) == false)  {
   require_once "path.php";
-  if(str_contains($url, "dantri.com.vn") && array_search($path[1], $categories) == false) { // false means newspaper
+  if(str_contains($url, "dantri.com.vn") && array_search($path, $categories) == false) { // false means newspaper
     $controller = 'DantriParser';
     $action = 'home';
     call($controller, $action);
-  } else if(str_contains($url , "vnexpress.net")) {
+  } else if(str_contains($url , "vnexpress.net") && array_search($path, $categories) == false) {
     $controller = 'VnexpressParser';
     $action = 'home';
     call($controller, $action);
   } else {
     call('Pages','error');
+    echo "not redirected";
   }
 } else if(array_key_exists($controller, $controllers))  {
   if (in_array($action, $controllers[$controller])) 
