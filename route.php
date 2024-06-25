@@ -5,19 +5,19 @@ use App\Controllers\VnexpressParserController;
 function call($controller, $action) {
   require_once "Application/Controllers/" . $controller . "Controller.php";
 
-  switch($controller) { // using switch doesn't scale well
+  switch ($controller) {
     case "Pages":
       $controller = new PagesController();
-    break;
+      break;
     case "DantriParser":
       // we need the model to query the database later in the controller
       require_once "Application/Models/DantriParser.php";
       $controller = new DantriParserController();
-    break;
+      break;
     case "VnexpressParser":
       require_once "Application/Models/VnexpressParser.php";
       $controller = new VnexpressParserController();
-    break;
+      break;
   }
   $controller->$action();
 }

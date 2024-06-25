@@ -40,7 +40,7 @@ class DantriParserController extends BaseController
         //  Get results from query
         $result = mysqli_query($conn, $sql);
         //  Check if there are any record match with the url
-        if(mysqli_num_rows($result) == 0)
+        if (mysqli_num_rows($result) == 0)
         {
             $sql2 = "INSERT INTO DanTri (danTriUrl, title, content, date_created)
             VALUES ('$elements[0]', '$elements[1]', '$elements[2]', '$elements[3]')";
