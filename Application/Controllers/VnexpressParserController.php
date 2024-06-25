@@ -6,17 +6,17 @@ use App\Models\VnexpressParser;
 require __DIR__ . "/../BaseController.php";
 
 class VnexpressParserController extends BaseController {
-    private $vnexpressParser; 
+    private $parser; 
     public function __construct() {
         $this->folder = 'VnexpressParser'; // Folder of Views
-        $this->vnexpressParser = new VnexpressParser();
+        $this->parser = new VnexpressParser();
     }
 
     public function getVariables() {
         $url = $_POST['input'];
-        $title = $this->vnexpressParser->getTitle($url);
-        $date = $this->vnexpressParser->getDate($url);
-        $article = $this->vnexpressParser->getArticle($url);
+        $title = $this->parser->getTitle($url);
+        $date = $this->parser->getDate($url);
+        $article = $this->parser->getArticle($url);
         return array($url, $title, $article, $date);
     }
 

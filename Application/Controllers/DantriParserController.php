@@ -6,20 +6,21 @@ use App\Models\DantriParser;
 require __DIR__ . "/../BaseController.php";
 
 class DantriParserController extends BaseController {
-    private $dantriParser; 
+    private $parser; 
     public function __construct() {
         $this->folder = 'DantriParser'; // Folder of Views
-        $this->dantriParser = new DantriParser();
+        $this->parser = new DantriParser();
     }
 
     public function getVariables() {
         $url = $_POST['input'];
-        $this->dantriParser->getClass($url);
-        $title = $this->dantriParser->getTitle($url);
-        $date = $this->dantriParser->getDate($url);
-        $article = $this->dantriParser->getArticle($url);
+        $this->parser->getClass($url);
+        $title = $this->parser->getTitle($url);
+        $date = $this->parser->getDate($url);
+        $article = $this->parser->getArticle($url);
         return array($url, $title, $article, $date);
     }
+    
     public function home() {
         $elements = $this->getVariables();
         $data = [
