@@ -31,11 +31,11 @@ $controllers = array(   'Pages' => ['home', 'error'],
                     );
 if (empty($url) == false)  {
   require_once "path.php";
-  if(str_contains($url, "dantri.com.vn") && array_search($path, $categories) == false) { // false means newspaper
+  if (str_contains($url, "dantri.com.vn") && array_search($path, $categories) == false) { // false means newspaper
     $controller = 'DantriParser';
     $action = 'home';
     call($controller, $action);
-  } else if(str_contains($url , "vnexpress.net") && array_search($path, $categories) == false) {
+  } else if (str_contains($url , "vnexpress.net") && array_search($path, $categories) == false) {
     $controller = 'VnexpressParser';
     $action = 'home';
     call($controller, $action);
@@ -43,9 +43,8 @@ if (empty($url) == false)  {
     call('Pages','error');
     echo "not redirected";
   }
-} elseif (array_key_exists($controller, $controllers))  {
-  if (in_array($action, $controllers[$controller])) 
-  {
+} elseif (array_key_exists($controller, $controllers)) {
+  if (in_array($action, $controllers[$controller])) {
     call($controller, $action);
     echo "Call to function successfully";
   } else {

@@ -3,15 +3,12 @@ namespace App\Models;
 use App\Models\Parser; // composer suddenlly stopped working after add VnexpressParser
 require_once __DIR__ ."/Parser.php";
 
-class DantriParser extends Parser
-{
-    public function getClass($url)
-    {
+class DantriParser extends Parser {
+    public function getClass($url) {
         global $titleClass;
         global $articleClass;
         $class = "emagazine";
-        if ($this->crawlProcess($url, $class)->length == 0)
-        {
+        if ($this->crawlProcess($url, $class)->length == 0) {
             $titleClass = 'title-page detail';
             $articleClass = 'singular-content';
         } else {
@@ -19,18 +16,18 @@ class DantriParser extends Parser
             $articleClass = 'e-magazine__body';
         }
     }
-    public function getTitle($url)
-    {
+
+    public function getTitle($url) {
         global $titleClass;
         return $this->returnData($url, $titleClass);
     }
-    public function getArticle($url)
-    {
+
+    public function getArticle($url) {
         global $articleClass;
         return $this->returnData($url, $articleClass);
     }
-    public function getDate($url)
-    {
+
+    public function getDate($url) {
         $dateClass = 'author-time';
         return $this->returnData($url, $dateClass);
     }

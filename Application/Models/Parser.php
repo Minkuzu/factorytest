@@ -2,10 +2,8 @@
 namespace App\Models;
 use DOMDocument;
 use DOMXPath;
-abstract class Parser{
-    public function crawlProcess($url, $class)
-    {
-        
+abstract class Parser {
+    public function crawlProcess($url, $class) {
         $html = $this->GetUrl($url);
 
         $dom = new DOMDocument();
@@ -16,11 +14,9 @@ abstract class Parser{
 
         return $divs;
     }
-    public function returnData($url, $class)
-    {
+    public function returnData($url, $class) {
         $divs = $this->crawlProcess($url,$class);
-        foreach($divs as $div) 
-        {
+        foreach ($divs as $div) {
             $data = $div->nodeValue;
             // If you want to include the html elements too:
             // echo $dom->saveXML($div);   
@@ -28,8 +24,7 @@ abstract class Parser{
         return $data;
     }   
 
-    public function getUrl($url)
-    {
+    public function getUrl($url) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
