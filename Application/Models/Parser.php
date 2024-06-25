@@ -41,8 +41,8 @@ abstract class Parser{
         curl_close($ch);
         return $urlData;
     }
-    public abstract function getTitle($url);
-    public abstract function getArticle($url);
-    public abstract function getDate($url);
+    abstract protected function getTitle($url);
+    abstract protected function getArticle($url);
+    abstract protected function getDate($url);
 }
 ?>

@@ -29,7 +29,7 @@ $controllers = array(   'Pages' => ['home', 'error'],
                         'DantriParser' => ['home'],
                         'VnexpressParser' => ['home']
                     );
-if(empty($url) == false)  {
+if (empty($url) == false)  {
   require_once "path.php";
   if(str_contains($url, "dantri.com.vn") && array_search($path, $categories) == false) { // false means newspaper
     $controller = 'DantriParser';
@@ -43,7 +43,7 @@ if(empty($url) == false)  {
     call('Pages','error');
     echo "not redirected";
   }
-} else if(array_key_exists($controller, $controllers))  {
+} elseif (array_key_exists($controller, $controllers))  {
   if (in_array($action, $controllers[$controller])) 
   {
     call($controller, $action);

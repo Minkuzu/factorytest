@@ -10,11 +10,11 @@ class DantriParser extends Parser
         global $titleClass;
         global $articleClass;
         $class = "emagazine";
-        if($this->crawlProcess($url, $class)->length == 0)
+        if ($this->crawlProcess($url, $class)->length == 0)
         {
             $titleClass = 'title-page detail';
             $articleClass = 'singular-content';
-        }else{
+        } else {
             $titleClass = 'e-magazine__title';
             $articleClass = 'e-magazine__body';
         }
