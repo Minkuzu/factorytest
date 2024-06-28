@@ -2,27 +2,26 @@
 
 use App\Controllers\DantriParserController;
 use App\Controllers\VnexpressParserController;
+
 function call($controller, $action) {
   require_once "Application/Controllers/" . $controller . "Controller.php";
-
   switch ($controller) {
     case "Pages":
       $controller = new PagesController();
       break;
-    case "DantriParser":
-      // we need the model to query the database later in the controller
-      require_once "Application/Models/DantriParser.php";
-      $controller = new DantriParserController();
-      break;
-    case "VnexpressParser":
-      require_once "Application/Models/VnexpressParser.php";
-      $controller = new VnexpressParserController();
-      break;
+      case "DantriParser":
+        // we need the model to query the database later in the controller
+        $controller = new DantriParserController();
+        break;
+      case "VnexpressParser":
+        $controller = new VnexpressParserController();
+        break;
   }
   $controller->$action();
 }
 
 $url = $_POST['input'];
+
 $path = parse_url($url, PHP_URL_PATH);
 // we're adding an entry for the new controller and its actions
 $controllers = array(   'Pages' => ['home', 'error'],
@@ -30,8 +29,8 @@ $controllers = array(   'Pages' => ['home', 'error'],
                         'VnexpressParser' => ['home']
                     );
 if (empty($url) == false)  {
-  require_once "path.php";
-  if (str_contains($url, "dantri.com.vn") && array_search($path, $categories) == false) { // false means newspaper
+  require_once "Curl.php";
+  if (str_contains($url, "dantri.com.vn") && array_search($path, $fixedCategories) == false) { // false means newspaper
     $controller = 'DantriParser';
     $action = 'home';
     call($controller, $action);
@@ -41,6 +40,7 @@ if (empty($url) == false)  {
     call($controller, $action);
   } else {
     call('Pages','error');
+    var_dump(array_search($path, $allCategories));
     echo "not redirected";
   }
 } elseif (array_key_exists($controller, $controllers)) {

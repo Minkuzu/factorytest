@@ -2,9 +2,10 @@
 namespace App\Models;
 use DOMDocument;
 use DOMXPath;
+require_once __DIR__ . "/../../Curl.php";
 abstract class Parser {
     public function crawlProcess($url, $class) {
-        $html = $this->GetUrl($url);
+        $html = getUrlData($url);
 
         $dom = new DOMDocument();
         @$dom->loadHTML($html);
