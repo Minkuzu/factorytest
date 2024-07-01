@@ -29,14 +29,9 @@ class DantriParserController extends BaseController {
             'title' => $this->elements[1],
             'article' => $this->elements[2],
             'date' => $this->elements[3]
-            ];  
-            var_dump($this->elements[1]);            
-        // $this->saveToDB();
+            ];            
+        $this->parser->addNews($this->elements[0], $this->elements[1], $this->elements[2], $this->elements[3]);
         $this->render('home', $data);
     }
-
-    // public function saveToDB() {
-    //     $this->parser->addNews($this->elements[0], $this->elements[1], $this->elements[2], $this->elements[3]);
-    // }
 }
 ?>
