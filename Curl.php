@@ -1,4 +1,5 @@
 <?php
+//  Return parse data of url
 function getUrlData($url) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -10,13 +11,17 @@ function getUrlData($url) {
     
     curl_close($ch);
     return $urlData;
-    }
+}
+
 $html = getUrlData($url);
 $dom = new DOMDocument();
+$domxml = new DOMDocument();
 @$dom->loadHTML($html); 
 $allCategories = array();
+//  Add all href attributes to array
 foreach ($dom->getElementsByTagName("a") as $anchorTags) {
     $allCategories[] = $anchorTags->getAttribute('href');
 }
-$fixedCategories = array_slice($allCategories,0,220);
+//  Return only categories path
+$DanTriCategories = array_slice($allCategories,0,220);
 ?>
