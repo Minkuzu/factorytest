@@ -12,7 +12,7 @@ class VnexpressParserController extends BaseController {
         $this->folder = 'VnexpressParser'; // Folder of Views
         $this->parser = new VnexpressParser();
     }
-
+    //  Refractor to BaseController 
     public function getVariables() {
         $url = $_POST['input'];
         $title = $this->parser->getTitle($url);
@@ -20,8 +20,8 @@ class VnexpressParserController extends BaseController {
         $article = $this->parser->getArticle($url);
         return array($url, $title, $article, $date);
     }
-
-    public function home() {
+    //  Refractor to BaseController 
+    public function viewHome() {
         $elements = $this->getVariables();
         $data = [
             'title' => $elements[1],
@@ -29,6 +29,7 @@ class VnexpressParserController extends BaseController {
             'date' => $elements[3]
             ];
         $this->parser->addNews($elements[0], $elements[1], $elements[2], $elements[3]);
+        //  Call to BaseController
         $this->render('home', $data);
     }
 }

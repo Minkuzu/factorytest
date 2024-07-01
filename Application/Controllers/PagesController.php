@@ -4,11 +4,11 @@ use App\BaseController;
 
 class PagesController {
 
-  public function home() {
+  public function viewHome() {
       require_once __DIR__ . "/../Views/Pages/home.php";
   }
 
-  public function error() {
+  public function viewError() {
     require_once __DIR__ . "/../Views/Pages/error.php";
   }
 }

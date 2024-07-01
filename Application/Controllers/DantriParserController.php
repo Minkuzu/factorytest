@@ -23,13 +23,14 @@ class DantriParserController extends BaseController {
         $article = $this->parser->getArticle($url);
         return array($url, $title, $article, $date);
     }
-    
-    public function home() {
+    //  change function name to verb first -> noun
+    public function viewHome() {
         $data = [
             'title' => $this->elements[1],
             'article' => $this->elements[2],
             'date' => $this->elements[3]
-            ];            
+            ];    
+                
         $this->parser->addNews($this->elements[0], $this->elements[1], $this->elements[2], $this->elements[3]);
         $this->render('home', $data);
     }

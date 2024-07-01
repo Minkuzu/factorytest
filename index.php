@@ -5,7 +5,7 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action     = $_GET['action'];
   } else {
     $controller = 'Pages';
-    $action     = 'home';
+    $action     = 'viewHome';
   }
 
 require_once "Application/Views/layout.php";
