@@ -1,8 +1,10 @@
 <?php
 namespace App\Models;
 use App\Models\Parser; // composer suddenlly stopped working after add VnexpressParser
-require_once __DIR__ ."/Parser.php";
+use DOMXPath;
 
+require_once __DIR__ ."/Parser.php";
+require_once __DIR__ . "/../../Curl.php";
 class DantriParser extends Parser {
     public function getClass($url) {
         global $titleClass;
@@ -19,6 +21,14 @@ class DantriParser extends Parser {
 
     public function getTitle($url) {
         global $titleClass;
+        $html = getUrlData($url);
+        //  Return a <title></title> tag in <head> tag instead of in <body> tag
+        //  Refactor to Parser 
+        foreach ($html->getElementsByTagName("title") as $title) {
+            if ($title->getAttribute('name') === "title" )  {
+                $titleClass = $title->getAttribute('content');
+            }
+        }
         return $this->returnData($url, $titleClass);
     }
 

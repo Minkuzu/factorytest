@@ -7,10 +7,7 @@ abstract class Parser {
     public function crawlProcess($url, $class) {
         $html = getUrlData($url);
 
-        $dom = new DOMDocument();
-        @$dom->loadHTML($html);
-
-        $xpath = new DomXPath($dom);
+        $xpath = new DomXPath($html);
         //  Get data based on class
         $divs = $xpath->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $class ')]");
 
@@ -26,7 +23,9 @@ abstract class Parser {
         return $data;
     }   
 
-    abstract protected function getTitle($url);
+    protected function getTitle($url)   {
+        $html = getUrlData($url);
+    }
     abstract protected function getArticle($url);
     abstract protected function getDate($url);
 }
