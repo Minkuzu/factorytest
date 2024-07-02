@@ -1,36 +1,27 @@
 <?php
 namespace App;
+use Exception;
 class BaseController
 {
     protected $folder;
-    protected $elements;
-    public function __construct()
-    {
-        $this->elements = $this->getParserAttribute();
-    }
-    //  might not necessary
-    public function getParserAttribute($parser) {
+    public function mergeData($parser) {
         $url = $_POST['input'];
         $parser->getClass($url);
-        $title = $parser->getTitle($url);
-        $date = $parser->getDate($url);
-        $article = $parser->getArticle($url);
-        return array($url, $title, $article, $date);
-    }
-    //  change function name to verb first -> noun
-    public function extractData($parser) {
-        $url = $_POST['input'];
-        $parser->getClass($url);
-        $title = $parser->getTitle($url);
-        $date = $parser->getDate($url);
-        $article = $parser->getArticle($url);
-        return array($url, $title, $article, $date);
+        // $title = $parser->getTitle($url);
+        // $date = $parser->getDate($url);
+        // $article = $parser->getArticle($url);
         $data = [
-            'title' => $this->elements[1],
-            //'title' => $title = $parser->getTitle($url),
-            'article' => $this->elements[2],
-            'date' => $this->elements[3]
+            'url' => $url,
+            'title' => $title = $parser->getTitle($url),
+            'article' => $article = $parser->getArticle($url),
+            'date' => $date = $parser->getDate($url)
+            // 'title' => $this->elements[1],
+            // 'article' => $this->elements[2],
+            // 'date' => $this->elements[3]
             ];   
+        // if (in_array(NULL, $data))  {
+        //     throw new Exception("Newspaper format is not supported");
+        // }
         return $data;         
     }
     public function render($file, $data = []) {
