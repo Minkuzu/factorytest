@@ -4,8 +4,8 @@ use DOMDocument;
 use DOMXPath;
 require_once __DIR__ . "/../../Curl.php";
 abstract class Parser {
-    public function crawlProcess($url, $class) {
-        $html = getUrlData($url);
+    public function crawlProcess($class) {
+        $html = getUrlData($_POST['input']);
 
         $xpath = new DomXPath($html);
         //  Get data based on class
@@ -13,8 +13,9 @@ abstract class Parser {
 
         return $divs;
     }
-    public function returnData($url, $class) {
-        $divs = $this->crawlProcess($url,$class);
+
+    public function returnData($class) {
+        $divs = $this->crawlProcess($class);
         foreach ($divs as $div) {
             $data = $div->nodeValue;
             // If you want to include the html elements too:
@@ -23,10 +24,34 @@ abstract class Parser {
         return $data;
     }   
 
-    protected function getTitle($url)   {
-        $html = getUrlData($url);
+    //  Get elements of an attribute based on the tag
+    //  $guidedAttribute and $targetedAttribute might have the same value 
+    protected function getElements($tag, $guidedAttribute, $guidedAttributeElement, $targetedAttribute)    {
+        $html = getUrlData($_POST['input']);
+        foreach ($html->getElementsByTagName($tag) as $tags) {
+            if ($tags->getAttribute($guidedAttribute) == $guidedAttributeElement )  {
+                $attributeElement = $tags->getAttribute($targetedAttribute);
+            }
+        }
+        return $attributeElement;
     }
-    abstract protected function getArticle($url);
-    abstract protected function getDate($url);
+
+    //  Get title by the <title> tag
+    public function getTitle()   {
+        $html = getUrlData($_POST['input']);
+        $title = $html->getElementsByTagName('title');
+        return $title->item(0)->nodeValue;
+    }
+
+    //  Get date published by the <time> tag and date attribute
+    public function getDate()    {
+        $html = getUrlData($_POST['input']);
+        foreach ($html->getElementsByTagName('time') as $time)  {
+            $datePublished = $time->getAttribute('datetime');
+        }
+        return $datePublished;
+    }
+
+    abstract protected function getArticle();
 }
 ?>
