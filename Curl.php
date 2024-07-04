@@ -9,9 +9,9 @@ function getUrlData($url) {
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     
     $urlData = curl_exec($ch);
+    curl_close($ch);
     $dom = new DOMDocument();
     @$dom->loadHTML($urlData); 
-    curl_close($ch);
     return $dom;
 }
 
