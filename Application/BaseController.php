@@ -11,13 +11,13 @@ class BaseController
         $data = [
             'url' => $url,
             'title' => $title = $parser->getTitle(),
-            'article' => $article = $parser->getArticle($url),
+            'article' => $article = $parser->getArticle(),
             'date' => $date = $parser->getDate()
             ];   
         //  Check if there are any NULL value before added to the database
-        if (in_array(NULL, $data))  {
-            throw new Exception("Website format is not supported");
-        }
+        // if (in_array(NULL, $data))  {
+        //     throw new Exception("Website format is not supported");
+        // }
         return $data;         
     }
 
