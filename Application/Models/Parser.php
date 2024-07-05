@@ -47,33 +47,28 @@ abstract class Parser {
     }
 
     //  Get date published by the <time> tag and date attribute
-    public function getDate()    {
-        $html = getUrlData($_POST['input']);
-        foreach ($html->getElementsByTagName('time') as $time)  {
-            $datePublished = $time->getAttribute('datetime');
-        }
-        return $datePublished;
-    }
-
-    public function addNews($dbUrl, $dbName, $url, $title, $content, $date) {
+    
+    public function addNews($dbUrl, $dbName, $url, $title, $article, $date) {
         require __DIR__ . "/../../connection.php";
         $sql = "SELECT $dbUrl FROM $dbName WHERE $dbUrl LIKE '$url'";
         //  Get results from query
         $result = mysqli_query($conn, $sql);
         //  Check if there are any record match with the url
         if (mysqli_num_rows($result) == 0) {
-            $sql2 = "INSERT INTO $dbName ($dbUrl, title, content, date_created)
-            VALUES ('$url', '$title', '$content', '$date')";
-            if ($conn->query($sql2) === TRUE) {
+            $sql2 = $conn->prepare("INSERT INTO $dbName ($dbUrl, title, content, date_created)
+            VALUES (?, ?, ?, ?)");
+            $sql2->bind_param("ssss", $url, $title, $article, $date);
+            if ($sql2->execute() === TRUE) {
                 echo "Data successfully inserted into table!";
             } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                echo "Something went wrong!" . $conn->error;
             }
-        //  If yes, don't insert
+            //  If yes, don't insert
         } elseif (mysqli_num_rows($result) == 1) {
             echo "This url is already in database!";
         }
     }
+    abstract public function getDate();
     abstract protected function getArticle();
 }
 ?>
