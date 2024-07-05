@@ -13,9 +13,9 @@ require_once __DIR__ . "/../ParserFactory.php";
 class DantriParserController extends BaseController {
     public function __construct() {
         $this->folder = 'DantriParser'; // Folder of Views
-        $this->parser = $this->factory->getParser("dantri");
+        $this->parser = $this->factory->getParser("dantri"); // Factory pattern for instantiate wanted parser;
     }
-    //  change function name to verb first -> noun
+    //  Change function name to verb first -> noun
     public function viewHome() {
         try {
             $data = $this->mergeData($this->parser);
