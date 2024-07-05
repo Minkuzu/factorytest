@@ -7,6 +7,8 @@ require_once __DIR__ ."/Parser.php";
 require_once __DIR__ . "/../../Curl.php";
 class DantriParser extends Parser {
     protected $articleClass;
+
+    //  Seperate e-magazine and normal newspaper
     public function getArticle() {
         global $articleClass;
         $class = 'emagazine';
@@ -19,6 +21,7 @@ class DantriParser extends Parser {
         return $this->returnData($articleClass);
     }
 
+    //  Add newspaper to the database
     public function addNews($url, $title, $content, $date) {
         require __DIR__ . "/../../connection.php";
         $sql = "SELECT danTriUrl FROM DanTri WHERE danTriUrl LIKE '$url'";
