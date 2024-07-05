@@ -4,6 +4,12 @@ use Exception;
 class BaseController
 {
     protected $folder;
+    protected $parser;
+    protected $factory;
+    public function __construct()
+    {
+        $this->factory = new ParserFactory();
+    }
     public function mergeData($parser) {
         $url = $_POST['input'];
         $data = [

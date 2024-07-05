@@ -7,13 +7,13 @@ use Exception;
 use App\ParserFactory;
 
 require_once __DIR__ . "/../Models/DantriParser.php";
-require __DIR__ . "/../BaseController.php";
+require_once __DIR__ . "/../BaseController.php";
+require_once __DIR__ . "/../ParserFactory.php";
 
 class DantriParserController extends BaseController {
-    protected $parser;
     public function __construct() {
         $this->folder = 'DantriParser'; // Folder of Views
-        $this->parser = new DantriParser();
+        $this->parser = $this->factory->getParser("dantri");
     }
     //  change function name to verb first -> noun
     public function viewHome() {

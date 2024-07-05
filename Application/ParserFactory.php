@@ -10,9 +10,9 @@ class ParserFactory {
     public function getParser($parserType){
         switch ($parserType) {
             case "dantri":
-                return new DantriParser;
+                return new DantriParser();
             case "vnexpress":
-                return new VnexpressParser;
+                return new VnexpressParser();
             default:
                 break;
         }

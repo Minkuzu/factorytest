@@ -11,7 +11,7 @@ class VnexpressParserController extends BaseController {
     private $parser; 
     public function __construct() {
         $this->folder = 'VnexpressParser'; // Folder of Views
-        $this->parser = new VnexpressParser();
+        $this->parser = $this->factory->getParser("vnexpress");
     }
     //  Refractor to BaseController 
     public function viewHome() {
