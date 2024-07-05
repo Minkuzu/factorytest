@@ -3,14 +3,17 @@ namespace App\Controllers;
 use App\BaseController; // composer doesn't work
 use App\Models\VnexpressParser;
 use Exception;
+use App\ParserFactory;
 
-require __DIR__ . "/../Models/VnexpressParser.php";
-require __DIR__ . "/../BaseController.php";
+require_once __DIR__ . "/../Models/VnexpressParser.php";
+require_once __DIR__ . "/../BaseController.php";
+require_once __DIR__ . "/../ParserFactory.php";
+require_once __DIR__ . "/../Models/Parser.php";
 
 class VnexpressParserController extends BaseController {
-    private $parser; 
     public function __construct() {
         $this->folder = 'VnexpressParser'; // Folder of Views
+        $this->factory = new ParserFactory();
         $this->parser = $this->factory->getParser("vnexpress");
     }
     //  Refractor to BaseController 
@@ -23,7 +26,7 @@ class VnexpressParserController extends BaseController {
         }
         $data = $this->mergeData($this->parser);
         var_dump($data);
-        $this->parser->addNews($data["url"], $data["title"], $data["article"], $data["date"]);
+        $this->parser->addNews("vnExpressUrl", "VnExpress", $data["url"], $data["title"], $data["article"], $data["date"]);
         $this->render('home', $data);
     }
 }

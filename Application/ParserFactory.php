@@ -5,7 +5,10 @@ use App\Models\DantriParser;
 use App\Models\Parser;
 use App\Models\VnexpressParser;
 
-require __DIR__ . "/Models/Parser.php";
+require_once __DIR__ . "/Models/Parser.php";
+require_once __DIR__ . "/Models/DantriParser.php";
+require_once __DIR__ . "/Models/VnexpressParser.php";
+
 class ParserFactory {
     public function getParser($parserType){
         switch ($parserType) {
@@ -14,6 +17,7 @@ class ParserFactory {
             case "vnexpress":
                 return new VnexpressParser();
             default:
+                return "break";
                 break;
         }
     }
