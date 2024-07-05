@@ -11,7 +11,7 @@ class DantriParser extends Parser {
     //  Seperate e-magazine and normal newspaper
     public function getArticle() {
         global $articleClass;
-        $class = 'emagazine';
+        $class = "e-magazine";
         if ($this->crawlProcess($class)->length == 0) {
             $articleClass = 'singular-content';
         } else {
@@ -19,6 +19,13 @@ class DantriParser extends Parser {
             $articleClass = 'e-magazine__body';
         }
         return $this->returnData($articleClass);
+    }
+    public function getDate()    {
+        $html = getUrlData($_POST['input']);
+        foreach ($html->getElementsByTagName('time') as $time)  {
+            $datePublished = $time->getAttribute('datetime');
+        }
+        return $datePublished;
     }
 }
 ?>
