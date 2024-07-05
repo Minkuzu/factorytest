@@ -4,6 +4,8 @@ use DOMDocument;
 use DOMXPath;
 require_once __DIR__ . "/../../Curl.php";
 abstract class Parser {
+
+    //  Seek through the html for wanted class
     public function crawlProcess($class) {
         $html = getUrlData($_POST['input']);
 
@@ -14,6 +16,7 @@ abstract class Parser {
         return $divs;
     }
 
+    //  After found the wanted class, return all context between the tag contains wanted class
     public function returnData($class) {
         $divs = $this->crawlProcess($class);
         foreach ($divs as $div) {
