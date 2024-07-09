@@ -3,7 +3,7 @@ namespace App;
 use Exception;
 class BaseController
 {
-    protected $folder;
+    public $folder;
     protected $parser;
     protected $factory;
     public function mergeData($parser) {

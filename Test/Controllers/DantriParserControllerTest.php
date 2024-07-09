@@ -10,5 +10,10 @@ class DantriParserControllerTest extends TestCase
         $construct = $dantriParserController->__construct();
         $this->assertIsObject($construct);
     }
+    public function testFolderName() {
+        $dantriParserController = new DantriParserController();
+        $folderName = $dantriParserController->folder;
+        $this->assertEquals('DantriParser', $folderName);
+    }
 }
 ?>
