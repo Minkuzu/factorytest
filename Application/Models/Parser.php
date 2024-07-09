@@ -50,6 +50,7 @@ abstract class Parser {
     
     public function addNews($dbUrl, $dbName, $url, $title, $article, $date) {
         require __DIR__ . "/../../connection.php";
+        //  Add exception
         $sql = "SELECT $dbUrl FROM $dbName WHERE $dbUrl LIKE '$url'";
         //  Get results from query
         $result = mysqli_query($conn, $sql);

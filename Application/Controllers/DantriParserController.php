@@ -19,7 +19,7 @@ class DantriParserController extends BaseController {
     //  Change function name to verb first -> noun
     public function viewHome() {
         try {
-            $this->data = $this->mergeData($this->parser, $_POST['input']);
+            $this->data = $this->mergeData($this->parser);
         } catch (Exception $e)  {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }

@@ -19,7 +19,7 @@ class VnexpressParserController extends BaseController {
     //  Refractor to BaseController 
     public function viewHome() {
         try {
-            $data = $this->mergeData($this->parser, $_POST['input']);
+            $data = $this->mergeData($this->parser);
         } catch (Exception $e)  {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
