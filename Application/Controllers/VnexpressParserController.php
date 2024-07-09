@@ -19,11 +19,10 @@ class VnexpressParserController extends BaseController {
     //  Refractor to BaseController 
     public function viewHome() {
         try {
-            $data = $this->mergeData($this->parser);
+            $data = $this->mergeData($this->parser, $_POST['input']);
         } catch (Exception $e)  {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
-        $data = $this->mergeData($this->parser);
         $this->parser->addNews("vnExpressUrl", "VnExpress", $data["url"], $data["title"], $data["article"], $data["date"]);
         $this->render('home', $data);
     }

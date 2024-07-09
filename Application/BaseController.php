@@ -4,8 +4,9 @@ use Exception;
 class BaseController
 {
     public $folder;
-    protected $parser;
-    protected $factory;
+    public $parser;
+    public $factory;
+    public $data;
     public function mergeData($parser) {
         $url = $_POST['input'];
         $data = [

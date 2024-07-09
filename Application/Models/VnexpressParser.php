@@ -3,15 +3,15 @@ namespace App\Models;
 use App\Models\Parser;
 require_once __DIR__ . "/Parser.php";
 class VnexpressParser extends Parser {
-    
+    protected $class;
     public function getArticle() {
-        $class = 'fck_detail';
-        return $this->returnData($class);
+        $this->class = 'fck_detail';
+        return $this->returnData($this->class);
     }
 
     public function getDate()   {
-        $class = 'date';
-        return $this->returnData($class);
+        $this->class = 'date';
+        return $this->returnData($this->class);
     }
 }
 ?>
