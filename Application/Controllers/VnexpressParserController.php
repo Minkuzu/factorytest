@@ -21,11 +21,9 @@ class VnexpressParserController extends BaseController {
         try {
             $data = $this->mergeData($this->parser);
         } catch (Exception $e)  {
-            var_dump($data);
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
         $data = $this->mergeData($this->parser);
-        var_dump($data);
         $this->parser->addNews("vnExpressUrl", "VnExpress", $data["url"], $data["title"], $data["article"], $data["date"]);
         $this->render('home', $data);
     }

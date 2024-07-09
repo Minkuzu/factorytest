@@ -18,14 +18,12 @@ class DantriParserController extends BaseController {
     }
     //  Change function name to verb first -> noun
     public function viewHome() {
-        // try {
-        //     $data = $this->mergeData($this->parser);
-        // } catch (Exception $e)  {
-        //     var_dump($data);
-        //     echo 'Caught exception: ',  $e->getMessage(), "\n";
-        // }
+        try {
+            $data = $this->mergeData($this->parser);
+        } catch (Exception $e)  {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
         $data = $this->mergeData($this->parser);
-        var_dump($data);
         $this->parser->addNews("danTriUrl", "DanTri", $data["url"], $data["title"], $data["article"], $data["date"]);
         $this->render('home', $data);
     }
